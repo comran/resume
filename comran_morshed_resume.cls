@@ -84,7 +84,6 @@
 % \printaddress is used to style an address line (given as input)
 \def \printaddress #1{
     \begingroup
-    \bf
     \def \\ {\addressSep\ }
     \addresssize {#1}
     \endgroup
