@@ -10,6 +10,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{multirow}
 \usepackage{tabularx}
+\usepackage{fancyhdr}
 \usepackage[table]{xcolor}
 
 \newcommand{\tab}[1]{\hspace{.2667\textwidth}\rlap{#1}}
@@ -25,7 +26,10 @@
     urlcolor=lightblue,
 }
 \color{darkblack}
-\pagestyle{empty}
+\setlength{\headheight}{0px}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Constants
@@ -34,15 +38,18 @@
 % \def\namesize{\fontsize{2.5em}{2.5em}\selectfont}
 \def\namesize{\fontsize{2.5em}{2em}\selectfont}
 
- % Size of the addresses at the top of the document.
- \def\addresssize{\fontsize{0.9em}{0.9em}\selectfont}
- 
+% Size of the addresses at the top of the document.
+\def\addresssize{\fontsize{0.9em}{0.9em}\selectfont}
+
+ % Size of the footer.
+ \def\footersize{\fontsize{0.9em}{0.9em}\selectfont}
+
 % The space between the two address (or phone/email) lines.
 \def\addressskip{\smallskip} % The space between the two address (or phone/email) lines
- 
+
 % The space above the horizontal line for each section .
 \def\sectionlineskip{\medskip} % The space above the horizontal line for each section 
- 
+
 % The space after the heading section.
 \def\sectionskip{\medskip} % The space after the heading section
 
@@ -137,3 +144,6 @@
 \end{list}
 \vspace{0.5em} % Some space after the list of bullet points
 }
+
+\lfoot{\footersize\href{https://github.com/comran/resume/blob/main/comran_morshed_resume.tex}{source code}}
+\rfoot{\footersize\textit{built on \MakeLowercase{\today}}}
