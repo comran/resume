@@ -16,19 +16,23 @@
 \newcommand{\itab}[1]{\hspace{0em}\rlap{#1}}
 
 \usepackage{hyperref}
+\definecolor{darkblack}{RGB}{17, 17, 17}
+\definecolor{lightblue}{RGB}{97, 156, 244}
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,
-    urlcolor=cyan,
+    linkcolor=lightblue,
+    filecolor=lightblue,
+    urlcolor=lightblue,
 }
+\color{darkblack}
 \pagestyle{empty}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Constants
 
  % Size of the name at the top of the document.
-\def\namesize{\fontsize{2.5em}{2.5em}\selectfont}
+% \def\namesize{\fontsize{2.5em}{2.5em}\selectfont}
+\def\namesize{\fontsize{2.5em}{2em}\selectfont}
 
  % Size of the addresses at the top of the document.
  \def\addresssize{\fontsize{0.9em}{0.9em}\selectfont}
@@ -47,9 +51,9 @@
 
 % Name
 \def \fname#1{\def\@fname{#1}}
-\def \@fname {}
+\def \@fname{}
 \def \lname#1{\def\@lname{#1}}
-\def \@lname {}
+\def \@lname{}
 
 \def \addressSep { $|$ }
 
@@ -71,18 +75,19 @@
 }
 
 % \printname is used to print the name as a page header
-\def \printname {
+\def \printname{%
     \begingroup
-    \namesize {\@fname\,{\bf \@lname}}
+    \namesize{\@fname\,{\bf \color{lightblue} \@lname}}
     \endgroup
 }
 
 % \printaddress is used to style an address line (given as input)
 \def \printaddress #1{
-\begingroup
-\def \\ {\addressSep\ }
-\addresssize {#1}
-\endgroup
+    \begingroup
+    \bf
+    \def \\ {\addressSep\ }
+    \addresssize {#1}
+    \endgroup
 }
 
 %----------------------------------------------------------------------------------------
@@ -92,7 +97,8 @@
 \let\ori@document=\document
 \renewcommand{\document}{
     \ori@document
-    \begin{tabularx}{\textwidth}{@{}X>{\raggedleft\arraybackslash}X@{}}
+    \setlength\tabcolsep{0pt}
+    \begin{tabularx}{\textwidth}{X>{\raggedleft\arraybackslash}X}
         \multirow{3}{*}{\printname} & {\printaddress{\@addressone}} \\
                                     & {\printaddress{\@addresstwo}} \\
                                     & {\printaddress{\@addressthree}} \\
